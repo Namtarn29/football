@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard กีฬาสี 2567 กฟฉ.1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #d0f0c0; /* สีสนามหญ้า */
+        }
+
+        header {
+            background-color: #004d00; /* สีเขียวเข้ม */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .scoreboard {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: #ffffff; /* พื้นหลังขาว */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .team {
+            text-align: center;
+            flex: 1;
+        }
+
+        .team h2 {
+            color: #004d00; /* สีเขียวเข้ม */
+            margin-bottom: 10px;
+        }
+
+        .score {
+            font-size: 3em;
+            color: #ff4500; /* สีส้มแดง */
+        }
+
+        .vs {
+            font-size: 2em;
+            color: #004d00; /* สีเขียวเข้ม */
+            margin: 0 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #004d00;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Scoreboard กีฬาสี 2567 กฟฉ.1 - ฟุตบอล</h1>
+    </header>
+
+    <div class="scoreboard">
+        <div class="team">
+            <h2>ทีม A</h2>
+            <div class="score" id="score-team-a">0</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+            <h2>ทีม B</h2>
+            <div class="score" id="score-team-b">0</div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2567 กฟฉ.1 | สร้างสรรค์ด้วยธีมสนามหญ้า
+    </footer>
+</body>
+</html>
