@@ -9,121 +9,103 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #d0f0c0; /* สีสนามหญ้า */
-        }
-
-        header {
-            background-color: #004d00; /* สีเขียวเข้ม */
+            background: #4CAF50; /* สีเขียวสนามหญ้า */
             color: white;
             text-align: center;
-            padding: 20px 0;
         }
-
+        header {
+            padding: 20px;
+            background: #388E3C;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
         .scoreboard {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            margin: 50px auto;
+            gap: 50px;
             padding: 20px;
+            margin: 20px auto;
             max-width: 800px;
-            background-color: #ffffff; /* พื้นหลังขาว */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: #2E7D32;
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
         .team {
-            text-align: center;
             flex: 1;
         }
-
-        .team h2 {
-            color: #004d00; /* สีเขียวเข้ม */
-            margin-bottom: 10px;
+        .team input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 1em;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
         }
-
         .score {
             font-size: 3em;
-            color: #ff4500; /* สีส้มแดง */
+            margin: 20px 0;
         }
-
-        .vs {
-            font-size: 2em;
-            color: #004d00; /* สีเขียวเข้ม */
-            margin: 0 20px;
-        }
-
         .buttons {
-            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
-
         .buttons button {
             padding: 10px 20px;
-            margin: 5px;
-            font-size: 1em;
-            color: white;
-            background-color: #004d00; /* สีเขียวเข้ม */
+            font-size: 1.2em;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
-
         .buttons button:hover {
-            background-color: #006600; /* สีเขียวเข้มกว่า */
+            background: #81C784;
         }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #004d00;
+        .team button {
+            background: #FF7043;
             color: white;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background: #1B5E20;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Scoreboard กีฬาสี 2567 กฟฉ.1 - ฟุตบอล</h1>
+        <h1>Scoreboard กีฬาสี 2567 กฟฉ.1</h1>
     </header>
-
     <div class="scoreboard">
-        <div class="team">
-            <h2 id="team-a">ทีม A</h2>
-            <div class="score" id="score-team-a">0</div>
+        <div class="team" id="team1">
+            <input type="text" id="team1Name" placeholder="ทีม 1">
+            <div class="score" id="team1Score">0</div>
             <div class="buttons">
-                <button onclick="increaseScore('score-team-a')">เพิ่มคะแนน</button>
-                <button onclick="decreaseScore('score-team-a')">ลดคะแนน</button>
+                <button onclick="updateScore('team1', 1)">+1</button>
+                <button onclick="updateScore('team1', -1)">-1</button>
             </div>
         </div>
-        <div class="vs">VS</div>
-        <div class="team">
-            <h2 id="team-b">ทีม B</h2>
-            <div class="score" id="score-team-b">0</div>
+        <div class="team" id="team2">
+            <input type="text" id="team2Name" placeholder="ทีม 2">
+            <div class="score" id="team2Score">0</div>
             <div class="buttons">
-                <button onclick="increaseScore('score-team-b')">เพิ่มคะแนน</button>
-                <button onclick="decreaseScore('score-team-b')">ลดคะแนน</button>
+                <button onclick="updateScore('team2', 1)">+1</button>
+                <button onclick="updateScore('team2', -1)">-1</button>
             </div>
         </div>
     </div>
-
     <footer>
-        &copy; 2567 กฟฉ.1 | สร้างสรรค์ด้วยธีมสนามหญ้า
+        <p>&copy; 2567 กฟฉ.1</p>
     </footer>
-
     <script>
-        function increaseScore(teamId) {
-            const scoreElement = document.getElementById(teamId);
+        function updateScore(team, delta) {
+            const scoreElement = document.getElementById(`${team}Score`);
             let currentScore = parseInt(scoreElement.textContent, 10);
-            scoreElement.textContent = currentScore + 1;
-        }
-
-        function decreaseScore(teamId) {
-            const scoreElement = document.getElementById(teamId);
-            let currentScore = parseInt(scoreElement.textContent, 10);
-            if (currentScore > 0) {
-                scoreElement.textContent = currentScore - 1;
-            }
+            currentScore += delta;
+            if (currentScore < 0) currentScore = 0; // ป้องกันคะแนนติดลบ
+            scoreElement.textContent = currentScore;
         }
     </script>
 </body>
