@@ -52,6 +52,25 @@
             margin: 0 20px;
         }
 
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1em;
+            color: white;
+            background-color: #004d00; /* สีเขียวเข้ม */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .buttons button:hover {
+            background-color: #006600; /* สีเขียวเข้มกว่า */
+        }
+
         footer {
             text-align: center;
             padding: 10px;
@@ -72,16 +91,40 @@
         <div class="team">
             <h2>ทีม A</h2>
             <div class="score" id="score-team-a">0</div>
+            <div class="buttons">
+                <button onclick="increaseScore('score-team-a')">เพิ่มคะแนน</button>
+                <button onclick="decreaseScore('score-team-a')">ลดคะแนน</button>
+            </div>
         </div>
         <div class="vs">VS</div>
         <div class="team">
             <h2>ทีม B</h2>
             <div class="score" id="score-team-b">0</div>
+            <div class="buttons">
+                <button onclick="increaseScore('score-team-b')">เพิ่มคะแนน</button>
+                <button onclick="decreaseScore('score-team-b')">ลดคะแนน</button>
+            </div>
         </div>
     </div>
 
     <footer>
         &copy; 2567 กฟฉ.1 | สร้างสรรค์ด้วยธีมสนามหญ้า
     </footer>
+
+    <script>
+        function increaseScore(teamId) {
+            const scoreElement = document.getElementById(teamId);
+            let currentScore = parseInt(scoreElement.textContent, 10);
+            scoreElement.textContent = currentScore + 1;
+        }
+
+        function decreaseScore(teamId) {
+            const scoreElement = document.getElementById(teamId);
+            let currentScore = parseInt(scoreElement.textContent, 10);
+            if (currentScore > 0) {
+                scoreElement.textContent = currentScore - 1;
+            }
+        }
+    </script>
 </body>
 </html>
