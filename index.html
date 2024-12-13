@@ -71,10 +71,6 @@
             background-color: #006600; /* สีเขียวเข้มกว่า */
         }
 
-        .name-input {
-            margin-bottom: 20px;
-        }
-
         footer {
             text-align: center;
             padding: 10px;
@@ -93,7 +89,6 @@
 
     <div class="scoreboard">
         <div class="team">
-            <input type="text" id="name-team-a" class="name-input" placeholder="ชื่อทีม A" oninput="updateTeamName('team-a', this.value)" />
             <h2 id="team-a">ทีม A</h2>
             <div class="score" id="score-team-a">0</div>
             <div class="buttons">
@@ -103,7 +98,6 @@
         </div>
         <div class="vs">VS</div>
         <div class="team">
-            <input type="text" id="name-team-b" class="name-input" placeholder="ชื่อทีม B" oninput="updateTeamName('team-b', this.value)" />
             <h2 id="team-b">ทีม B</h2>
             <div class="score" id="score-team-b">0</div>
             <div class="buttons">
@@ -130,11 +124,6 @@
             if (currentScore > 0) {
                 scoreElement.textContent = currentScore - 1;
             }
-        }
-
-        function updateTeamName(teamElementId, newName) {
-            const teamNameElement = document.getElementById(teamElementId);
-            teamNameElement.textContent = newName || `ทีม ${teamElementId.slice(-1).toUpperCase()}`;
         }
     </script>
 </body>
